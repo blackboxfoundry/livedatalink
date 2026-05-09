@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "websiteUrl": "https://livedatalink.ai",
   "repository": {
-    "url": "https://github.com/blackboxfoundry/livedatalink-mcp",
+    "url": "https://github.com/blackboxfoundry/livedatalink",
     "source": "github"
   },
   "remotes": [
