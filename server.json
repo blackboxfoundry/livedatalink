@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.blackboxfoundry/livedatalink",
-  "description": "62 real-time data tools for AI agents: finance, courts, sanctions, weather, cyber. Free tier.",
-  "version": "1.0.0",
+  "description": "88 real-time data tools for AI agents across 18 domains: finance, options, crypto, FMCSA, sanctions, federal courts, weather, vehicles, cyber (CVE/EPSS/KEV), college metrics, FEMA disasters, property, EIA energy, FRED Federal Reserve macroeconomics, SEC EDGAR filings, NREL renewables. Free tier.",
+  "version": "1.1.0",
   "websiteUrl": "https://livedatalink.ai",
   "repository": {
     "url": "https://github.com/blackboxfoundry/livedatalink",

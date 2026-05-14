@@ -1,7 +1,7 @@
 runtime: "remote"
 name: "livedatalink"
 displayName: "LiveDataLink"
-description: "62 real-time data tools across 14 domains for AI agents. Stocks, crypto, FMCSA, sanctions, courts, weather, vehicles, cyber, college, FEMA disasters, property. One endpoint, one API Key. Free tier."
+description: "88 real-time data tools across 18 domains for AI agents. Stocks, options, crypto, FMCSA, sanctions, federal courts, weather, vehicles, cyber (CVE/CWE/EPSS/KEV), college metrics, FEMA disasters, property, EIA energy, FRED Federal Reserve macroeconomics, SEC EDGAR filings, NREL renewable energy. One endpoint, one API Key. Free tier."
 homepage: "https://livedatalink.ai"
 icon: "https://livedatalink.ai/logo.png"
 remote:

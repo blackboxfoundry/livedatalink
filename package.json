@@ -1,7 +1,25 @@
 {
   "name": "@blackboxfoundry/livedatalink",
-  "version": "1.0.0",
-  "description": "62 real-time data tools for AI agents via MCP. Finance, crypto, FMCSA, sanctions, courts, weather, vehicles, cybersecurity, FEMA, property. One bearer token, one bill. Free tier available.",
+  "version": "1.1.0",
+  "bin": {
+    "livedatalink": "bin/install.js"
+  },
+  "files": [
+    "bin",
+    "examples",
+    "llms-install.md",
+    "mcp.json",
+    "server.json",
+    "smithery.yaml",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "description": "88 real-time data tools for AI agents via MCP. Finance, options, crypto, FMCSA, sanctions, federal courts, weather, vehicles, cybersecurity (CVE/EPSS/KEV), FEMA, property, college metrics, EIA energy, FRED Federal Reserve macroeconomics, SEC EDGAR filings, NREL renewables. One bearer token, one bill. Free tier available.",
   "homepage": "https://livedatalink.ai",
   "license": "MIT",
   "author": "Blackbox Foundry LLC <support@livedatalink.ai>",
@@ -20,7 +38,11 @@
     "data-api",
     "claude",
     "cursor",
+    "cline",
+    "continue",
     "finance",
+    "stocks",
+    "options",
     "crypto",
     "fmcsa",
     "sanctions",
@@ -32,14 +54,24 @@
     "fema",
     "property",
     "education",
+    "eia",
+    "energy",
+    "fred",
+    "macroeconomics",
+    "sec",
+    "edgar",
+    "filings",
+    "nrel",
+    "renewables",
+    "solar",
     "real-time-data",
     "government-data"
   ],
   "mcp": {
     "endpoint": "https://livedatalink.ai/mcp",
     "transport": "streamable-http",
-    "tools": 62,
-    "domains": 14,
+    "tools": 88,
+    "domains": 18,
     "freeTier": true,
     "documentation": "https://livedatalink.ai/tools",
     "llmsTxt": "https://livedatalink.ai/llms.txt"

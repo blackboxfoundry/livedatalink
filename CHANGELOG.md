@@ -2,6 +2,18 @@
 
 All notable changes to LiveDataLink are documented here. The hosted MCP server is the source of truth; this file tracks the user-visible additions.
 
+## [1.1.0] — 2026-05-10
+
+### Added
+- **EIA energy data domain (7 tools)** — gasoline prices, natural gas (Henry Hub spot, futures, residential, storage), state-level electricity, US oil supply by PADD, renewable generation by source, energy consumption by sector, flexible EIA series lookup.
+- **FRED Federal Reserve economic data domain (7 tools)** — 800K+ macroeconomic series. Tools: series info, observations, full-text search, category browse, friendly-name quick indicators (unemployment, fed_funds, cpi, gdp, ten_year_yield, vix, wti, henry_hub natural gas, 30Y mortgage, M2, retail_sales, recession indicator, and 14 more), 2-5 series compare, releases calendar.
+- **SEC EDGAR filings domain (7 tools)** — public company filings: CIK lookup by ticker/name, recent filings, filing text content, full-text search, XBRL company facts (revenue, EPS, assets), insider transactions (Form 4), filings by form type.
+- **NREL renewable energy domain (5 tools)** — PVWatts solar PV production estimates, solar resource (GHI/DNI/lat-tilt), utility rates by location, alternative fuel station finder (EV, CNG, hydrogen, LPG, etc.), station detail by ID. Internal geocoding via OpenStreetMap Nominatim.
+- **Options chains via Marketdata.app fallback** — `options_chain` now returns real call/put data with bid/ask, IV, OI, greeks. Previously returned a paid-tier message.
+
+### Catalog
+- Total: **88 production tools across 18 live domains** (up from 62 / 14).
+
 ## [1.0.0] — 2026-05-09
 
 ### Added
