@@ -2,5 +2,6 @@
   "$schema": "https://glama.ai/mcp/schemas/server.json",
   "maintainers": [
     "blackboxfoundry-ops"
-  ]
+  ],
+  "description": "Retina is a proprietary image compression and encryption engine I own and am protecting as my own intellectual property. A director routes each region of an image to whichever method compresses it best, combining industry-standard codecs with original techniques that are not part of any public standard: multi-orientation surface modeling, a context-propagation method in which already-encoded regions inform what gets encoded next, and a multi-layer competition among encoding strategies. It guarantees a provable bound on how far any pixel can deviate from the original, encrypts the result in the same pass, and is tamper-evident: any modification to the file is detected and decryption fails, with optional cryptographic commitments to the payload and the source plus a signature proving origin. On the standard Kodak reference corpus at full resolution it beats every major lossless codec (JPEG XL, WebP, JPEG 2000, JPEG-LS, PNG) and stays competitive with the best lossy codecs, while being the only format that pairs a per-pixel accuracy guarantee with tamper-evident integrated encryption."
 }
