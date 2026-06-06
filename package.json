@@ -1,7 +1,7 @@
 {
   "name": "@blackboxfoundry/livedatalink",
   "version": "1.0.0",
-  "description": "62 real-time data tools for AI agents via MCP. Finance, crypto, FMCSA, sanctions, courts, weather, vehicles, cybersecurity, FEMA, property. One bearer token, one bill. Free tier available.",
+    "description": "177 real-time data tools for AI agents via MCP. Finance, crypto, FMCSA, sanctions, courts, weather, vehicles, cybersecurity, FEMA, property. One bearer token, one bill. Free tier available.",
   "homepage": "https://livedatalink.ai",
   "license": "MIT",
   "author": "Blackbox Foundry LLC <support@livedatalink.ai>",
