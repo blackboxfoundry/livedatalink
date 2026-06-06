@@ -1,0 +1,36 @@
+name: Sync tool count
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/update-tool-count.mjs"
+      - ".github/workflows/sync-tool-count.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Update tool count from live catalog
+        run: node scripts/update-tool-count.mjs
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add README.md package.json
+            git commit -m "chore: sync tool count from live catalog"
+            git push
+          else
+            echo "No changes."
+          fi
