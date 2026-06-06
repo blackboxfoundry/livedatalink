@@ -357,9 +357,9 @@ Most tools cost $0.005-$0.03 per query. At 50 queries/day, you pay roughly $0.50
 
 ## License
 
-MIT License - Copyright (c) Blackbox Foundry LLC
+MIT License - Copyright (c) Blackbox Foundry LLC. See [LICENSE](LICENSE) for the full text.
 
-The hosted service at livedatalink.ai is operated by Blackbox Foundry LLC under the pricing terms above. Self-hosted use of this code is unrestricted under MIT.
+The code in this repository (documentation, configuration examples, and install instructions) is unrestricted under MIT. The hosted Worker source code that powers livedatalink.ai is not included in this repository and remains proprietary to Blackbox Foundry LLC; use of the hosted service is governed by the pricing terms above. See [NOTICE](NOTICE) for details.
 
 ## About
 
