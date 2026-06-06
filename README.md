@@ -229,7 +229,7 @@ npm install && npm run build
 
 ## Python Client
 
-Direct access to all 62 tools from Python scripts, Jupyter notebooks, or automation pipelines.
+Direct access to all 177 tools from Python scripts, Jupyter notebooks, or automation pipelines.
 
 ```python
 from livedatalink import LiveDataLink
