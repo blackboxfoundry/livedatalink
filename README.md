@@ -1,10 +1,10 @@
 # LiveDataLink
 
-**Real-time data for AI agents. 177 tools. 50+ live domains. Pay per query.**
+**Real-time data for AI agents. 177 tools. 50+ live domains. Tiered access levels.**
 
 LiveDataLink is an MCP server that gives AI agents instant access to real-world data across stocks, options, crypto, SEC EDGAR filings, US Treasury, FRED macroeconomics, BLS labor data, EIA energy, FMCSA trucking safety, federal courts, OpenSanctions screening, cybersecurity feeds (CVE/CWE/EPSS/CISA KEV), FEMA disasters, NWS weather, USGS earthquakes, FDA drug/device, EPA compliance, FEC campaign finance, NREL renewables, USAspending federal awards, US Census, World Bank, ProPublica nonprofits, NPI healthcare providers, package registries (npm, pypi, cargo, github), RDAP domain/IP records, IP reputation, FBI wanted, vehicle VIN, NHTSA recalls, property and parcel records, real estate analytics, weather, package tracking, local businesses, US college metrics, books, academic papers, SCOTUS case law, and more.
 
-One server, one API key, no subscriptions. Connect any MCP-compatible client (Claude, GPT, Cursor, Windsurf, Cline, Continue, custom agents) and start querying live data in seconds.
+One server, one API key, tiered access levels. Connect any MCP-compatible client (Claude, GPT, Cursor, Windsurf, Cline, Continue, custom agents) and start querying live data in seconds.
 
 **Remote MCP endpoint:** `https://livedatalink.ai/mcp`
 **Status:** `https://livedatalink.ai/`
