@@ -1,0 +1,10 @@
+LiveDataLink
+Copyright (c) 2026 Blackbox Foundry LLC
+
+The MIT license in this repository (see LICENSE) covers the documentation,
+configuration examples, and install instructions contained here.
+
+The hosted Worker source code that powers the service at https://livedatalink.ai
+is not included in this repository and remains proprietary to Blackbox Foundry LLC.
+Use of the hosted service is governed by the pricing and terms published at
+https://livedatalink.ai.

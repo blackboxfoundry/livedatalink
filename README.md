@@ -1,4 +1,4 @@
-# LiveDataLink MCP Server
+# LiveDataLink
 
 > Real-time data for AI agents. 182 tools across 36 domains. One MCP endpoint, one API Key, one bill.
 
@@ -23,13 +23,39 @@ Don't have an API key yet? Get a free one (100 queries/month, no credit card) at
 
 If you'd rather wire it up yourself, add this to your MCP client's config:
 
+For Claude Desktop, add to your config:
 ```json
 {
   "mcpServers": {
     "livedatalink": {
-      "url": "https://livedatalink.ai/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
+      "url": "https://livedatalink.ai/mcp"
+    }
+  }
+}
+```
+
+### Option 2: Local (stdio - Free, No Limits)
+
+Run the server locally for unlimited free usage:
+
+1. Build the server:
+```bash
+git clone https://github.com/blackboxfoundry/livedatalink.git
+cd livedatalink
+npm install && npm run build
+```
+
+2. Get a free FMCSA API key at https://mobile.fmcsa.dot.gov/QCDevsite/ (only needed for trucking tools)
+
+3. Add to Claude Desktop config (`claude_desktop_config.json`):
+```json
+{
+  "mcpServers": {
+    "livedatalink": {
+      "command": "node",
+      "args": ["/path/to/livedatalink/dist/index.js"],
+      "env": {
+        "FMCSA_API_KEY": "your-fmcsa-key"
       }
     }
   }
@@ -48,15 +74,59 @@ Your API key arrives by email within seconds of signup.
 
 ## Test from terminal
 
-```bash
-curl -X POST https://livedatalink.ai/mcp \
-  -H "Accept: application/json, text/event-stream" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}'
+## Python Client
+
+Direct access to all 177 tools from Python scripts, Jupyter notebooks, or automation pipelines.
+
+```python
+from livedatalink import LiveDataLink
+
+with LiveDataLink() as ldl:
+    # Finance
+    print(ldl.stock_quote("AAPL"))
+    print(ldl.stock_compare("AAPL,MSFT,GOOGL"))
+
+    # Crypto
+    print(ldl.crypto_price("BTC"))
+    print(ldl.crypto_compare("BTC,ETH,SOL"))
+    print(ldl.crypto_trending())
+
+    # Trucking
+    print(ldl.carrier_lookup(dot_number=2233966))
+    print(ldl.safety_scores(dot_number=2233966))
+
+    # Property
+    print(ldl.property_lookup("2415 LAKE WOODLANDS DR"))
+    print(ldl.property_search_owner("SMITH"))
+
+    # Weather
+    print(ldl.weather_current("Houston, TX"))
+    print(ldl.weather_forecast("New York", days=5))
+
+    # Vehicle
+    print(ldl.vin_decode("1HGBH41JXMN109186"))
+    print(ldl.vehicle_recalls(year=2020, make="Toyota", model="Camry"))
+
+    # Tracking
+    print(ldl.package_track("1Z999AA10123456784"))
+
+    # Local
+    print(ldl.local_search("coffee", "Austin, TX"))
+
+    # Discovery
+    print(ldl.search_available_datasets("energy data"))
 ```
 
-## What's in the catalog
+CLI usage:
+```bash
+python python/livedatalink.py stock_quote symbol=AAPL
+python python/livedatalink.py weather_current location="Houston, TX"
+python python/livedatalink.py vin_decode vin=1HGBH41JXMN109186
+python python/livedatalink.py package_track tracking_number=1Z999AA10123456784
+python python/livedatalink.py local_search query=restaurants location="Dallas, TX"
+python python/livedatalink.py search_available_datasets query="cryptocurrency"
+python python/livedatalink.py list_tools
+```
 
 182 production tools across 36 live data domains:
 
@@ -101,25 +171,70 @@ curl -X POST https://livedatalink.ai/mcp \
 | **Cross-Source Entity Resolution** | 2 | Resolve a company across SEC + EPA + sanctions + USAspending in one call |
 | **Catalog / Discovery** | 1 | `search_available_datasets` — free, logs unmet demand to drive the roadmap |
 
-Full tool descriptions: https://livedatalink.ai/tools
+Symbol           AAPL
+Name             Apple Inc.
+Price            $214.29
+Change           +$1.86 (+0.88%)
+52-Week Range    $164.08 - $237.49
+Volume           48.3M
+Market Cap       $3.26T
+P/E Ratio        33.21
+Dividend Yield   0.47%
+```
 
-LLM-readable summary: https://livedatalink.ai/llms.txt
+```
+> fmcsa_carrier_lookup dot_number=2233966
+
+FMCSA CARRIER DETAIL
+================================================================
+Legal Name:                SCHNEIDER NATIONAL CARRIERS INC
+DOT Number:                2233966
+MC Number:                 133655
+Status:                    ACTIVE
+Power Units:               10543
+Drivers:                   12847
+Safety Rating:             Satisfactory
+```
+
+```
+> weather_current location="Houston, TX"
+
+CURRENT WEATHER - Houston, TX
+================================
+Temperature:     87°F (31°C)
+Feels Like:      94°F (34°C)
+Conditions:      Partly Cloudy
+Humidity:        62%
+Wind:            8 mph SSE
+```
+
+## The Data Menu
+
+LiveDataLink covers 25 data domains. 9 are live today, and new domains ship based on demand. Use the `search_available_datasets` tool to explore the full menu, or ask about any of these:
+
+**Live now:** Finance, Cryptocurrency, Transportation/FMCSA, Property, Weather, Vehicle/NHTSA, Package Tracking, Local Business, Dataset Discovery
+
+**Shipping next:** SEC Filings, FRED Economic Data, Energy/EIA, USPTO Patents, Census, Texas Oil & Gas (RRC), State Business Entity Search
+
+**On the roadmap:** Court Records, Aviation, Maritime, Healthcare, Forex, Education, Environmental, Immigration, Elections, Sports, Food Safety, Nonprofits, Government Permits, Public Safety
+
+Every query for an unavailable domain is logged and directly shapes the build priority. Ask for what you need.
 
 Machine-readable health: https://livedatalink.ai/health · Server card: https://livedatalink.ai/.well-known/mcp/server-card.json
 
 ## Pricing
 
-| Tier | Price | Queries / month | Rate limit | Overage |
-|---|---|---|---|---|
-| **Free** | $0 | 100 | 5 req/min | N/A (hard cap) |
-| **Starter** | $10/mo | 5,000 | 30 req/min | $0.01/query |
-| **Pro** | $49/mo | 50,000 | 120 req/min | $0.01/query |
+| Plan | Monthly | Included Queries | Overage | Rate Limit |
+|------|---------|-----------------|---------|------------|
+| Free | $0 | 100 | Hard cap | 5/min |
+| Starter | $10 | 5,000 | $0.01/query | 30/min |
+| Pro | $49 | 50,000 | $0.01/query | 120/min |
 
-The discovery tool `search_available_datasets` is **free for everyone**, doesn't consume credits, and runs against the live catalog. Use it freely.
+Local stdio usage is always free with no rate limits.
 
-For business buyers: most of these data sources sell separately at $300–$5,000/month per source. Replacing 10 enterprise data subscriptions with LiveDataLink Pro saves ~$14,000/month while consolidating to one invoice and one API integration.
+Most tools cost $0.005-$0.03 per query. At 50 queries/day, you pay roughly $0.50-1.00/day instead of $29-500/month for traditional data subscriptions.
 
-## Why LiveDataLink
+## Architecture
 
 **Stop juggling 36 vendor accounts, 36 API keys, and 36 invoices.** One MCP endpoint, one bearer token, one monthly bill. Predictable overage rate ($0.01/query, no per-tool surprises). Built specifically for AI agents — open protocol, portable keys, no lock-in.
 
@@ -161,6 +276,12 @@ Built and operated by **Blackbox Foundry LLC**, a Texas single-member LLC. Indie
 
 ## License
 
-This wrapper repository is MIT licensed. The hosted Worker source code is proprietary and not included; this repo contains documentation, install instructions, and configuration examples.
+MIT License - Copyright (c) Blackbox Foundry LLC. See [LICENSE](LICENSE) for the full text.
 
-Copyright © 2026 Blackbox Foundry LLC. All rights reserved.
+The code in this repository (documentation, configuration examples, and install instructions) is unrestricted under MIT. The hosted Worker source code that powers livedatalink.ai is not included in this repository and remains proprietary to Blackbox Foundry LLC; use of the hosted service is governed by the pricing terms above. See [NOTICE](NOTICE) for details.
+
+## About
+
+The hosted service at livedatalink.ai is operated by Blackbox Foundry LLC, a Texas company. Source in this repository is MIT-licensed.
+
+For service questions: support@livedatalink.ai

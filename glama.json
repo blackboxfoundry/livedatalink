@@ -1,6 +1,7 @@
 {
-  "$schema": "https://glama.ai/mcp/schemas/server.json",
-  "maintainers": [
-    "blackboxfoundry-ops"
-  ]
+    "$schema": "https://glama.ai/mcp/schemas/server.json",
+    "maintainers": [
+          "blackboxfoundry-ops"
+    ],
+    "description": "LiveDataLink is an MCP server giving AI agents instant access to real-time data across finance, crypto, FMCSA trucking safety, sanctions screening, federal courts, cybersecurity feeds, FEMA disasters, weather, vehicles, property records, education, and more. One server, one API key, pay per query, free tier available."
 }
