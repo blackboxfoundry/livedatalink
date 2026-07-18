@@ -2,6 +2,11 @@
 
 All notable changes to LiveDataLink are documented here. The hosted MCP server is the source of truth; this file tracks the user-visible additions.
 
+## [1.2.1] — 2026-07-17
+
+### Added
+- **Complete `llms.txt` catalog committed to the wrapper** — the repo now ships a full, per-tool `llms.txt` enumerating all **243 tools across all 53 live domains**, mirrored verbatim from the authoritative served copy at https://livedatalink.ai/llms.txt. This replaces the previously incomplete/partial coverage (only ~35 domain groups / ~163 tools were enumerated in wrapper docs) with the registry-derived, machine-readable inventory. The hosted server (`tools/list`) remains the source of truth; this file is a static mirror for crawlers, registries, and offline discovery.
+
 ## [1.2.0] — 2026-07-17
 
 ### Changed
