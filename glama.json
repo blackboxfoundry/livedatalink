@@ -3,5 +3,5 @@
     "maintainers": [
           "blackboxfoundry-ops"
     ],
-    "description": "LiveDataLink is an MCP server giving AI agents instant access to real-time data across finance, crypto, FMCSA trucking safety, sanctions screening, federal courts, cybersecurity feeds, FEMA disasters, weather, vehicles, property records, education, and more. One server, one API key, pay per query, free tier available."
+    "description": "LiveDataLink is an MCP server giving AI agents instant access to 243 real-time data tools across 53 domains: finance, crypto, FMCSA trucking safety, sanctions screening, federal courts, cybersecurity feeds, FEMA disasters, weather, vehicles, property records, education, geocoding, federal grants, CPSC product-safety, and more. One server, one API key, pay per query, free tier available."
 }

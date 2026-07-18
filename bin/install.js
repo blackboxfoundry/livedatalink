@@ -52,8 +52,8 @@ const magenta = c("35");
 function banner() {
   const line = (txt) => console.log(txt);
   line("");
-  line(bold(blue("LiveDataLink")) + dim(" - 88 real-time data tools for AI agents"));
-  line(dim("88 tools across 18 domains: finance, sanctions, courts, EIA energy, FRED macro, SEC EDGAR, NREL renewables, and more"));
+  line(bold(blue("LiveDataLink")) + dim(" - 243 real-time data tools for AI agents"));
+  line(dim("243 tools across 53 domains: finance, sanctions, courts, EIA energy, FRED macro, SEC EDGAR, NREL renewables, geocoding, grants, product-safety, and more"));
   line(dim("https://livedatalink.ai"));
   line("");
 }

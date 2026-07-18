@@ -2,6 +2,22 @@
 
 All notable changes to LiveDataLink are documented here. The hosted MCP server is the source of truth; this file tracks the user-visible additions.
 
+## [1.2.0] — 2026-07-17
+
+### Changed
+- **Catalog refresh: 243 production tools across 53 live data domains** (up from the previously documented 182 / 36). Wrapper docs and registry manifests (README, glama.json, smithery.yaml, server.json, package.json, llms-install.md, examples) resynced to the live server card at https://livedatalink.ai/.well-known/mcp/server-card.json and https://livedatalink.ai/health.
+
+### Added
+- **Geocoding domain** — Census-geography geocoding tools.
+- **Grants domain** — federal grants / funding lookup.
+- **Product-safety domain** — CPSC product recall tools.
+
+### Pricing (unchanged, restated for clarity)
+- **Free** — 100 queries/month, 5 req/min, $0, no credit card.
+- **Starter** — $10/month, 5,000 queries, 30 req/min.
+- **Pro** — $49/month, 50,000 queries, 120 req/min.
+- Overage $0.01/query across all tools. The free `search_available_datasets` discovery tool consumes no credits.
+
 ## [1.1.0] — 2026-05-10
 
 ### Added
