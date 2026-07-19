@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.blackboxfoundry/livedatalink",
-  "description": "243 real-time data tools across 53 domains: sanctions, SEC, courts, finance, cyber. Free tier.",
-  "version": "1.3.0",
+  "description": "257 tools across 56 US public-data domains: sanctions, FMCSA, SEC, courts, energy. Free tier.",
+  "version": "1.4.0",
   "websiteUrl": "https://livedatalink.ai",
   "repository": {
     "url": "https://github.com/blackboxfoundry/livedatalink",
