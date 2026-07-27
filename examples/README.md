@@ -15,7 +15,7 @@ For Continue, Cline, and Zed, the same JSON shape works under their respective `
 - **`test-with-powershell.ps1`** — PowerShell, for Windows
 
 Both scripts call three things:
-1. `tools/list` — enumerates the 243 tools (proves the API Key is valid)
+1. `tools/list` — enumerates the full tool catalog (proves the API Key is valid)
 2. `search_available_datasets` (free, no credits) — proves the discovery tool works
 3. `weather_current` — proves a real data tool returns live data
 
