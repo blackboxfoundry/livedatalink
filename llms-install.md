@@ -32,7 +32,7 @@ Replace `USER_API_KEY_HERE` with the actual API Key the user obtained above. Do 
 
 ## Verification
 
-After configuration, verify the connection by calling `tools/list`. Expected response is a JSON-RPC object containing 243 tools across 53 domains. If the response is `401 INVALID_API_KEY`, the API Key is wrong or deactivated. If the response is `429 RATE_LIMIT`, the user has exceeded their tier's per-minute limit (5 for free, 30 for Starter, 120 for Pro).
+After configuration, verify the connection by calling `tools/list`. Expected response is a JSON-RPC object containing 283 tools across 59 domains. If the response is `401 INVALID_API_KEY`, the API Key is wrong or deactivated. If the response is `429 RATE_LIMIT`, the user has exceeded their tier's per-minute limit (5 for free, 30 for Starter, 120 for Pro).
 
 ## Recommended first call
 
@@ -53,7 +53,7 @@ After installation, call `search_available_datasets` with a free-text query desc
 ## Notes for the install agent
 
 - This is a remote (hosted) MCP server. The user does not need to install anything locally beyond the config block above.
-- The free tier (100 queries/month) is fully functional — no feature is gated to paid tiers; only volume and rate limit differ.
+- The free tier (1,000 queries/month) is fully functional — no feature is gated to paid tiers; only volume and rate limit differ.
 - The discovery tool (`search_available_datasets`) is free and uses a separate rate-limit pool. Call it freely.
 - Operator: Blackbox Foundry LLC. Support contact: support@livedatalink.ai.
 - This server is paid (with a free tier). If the user is uncomfortable with paid services, the free tier still gives them full functional access at low volume.
