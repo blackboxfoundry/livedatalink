@@ -30,7 +30,7 @@ const readline = require("readline");
 // Constants
 // -------------------------------------------------------------------
 
-const LIVEDATALINK_URL = "https://livedatalink.ai/mcp";
+const LIVEDATALINK_URL = "https://livedatalink.ai/mcp?profile=starter";
 const SIGNUP_URL = "https://livedatalink.ai/signup/free";
 const PRICING_URL = "https://livedatalink.ai/#pricing";
 const TOOL_KEY = "livedatalink";
@@ -52,8 +52,8 @@ const magenta = c("35");
 function banner() {
   const line = (txt) => console.log(txt);
   line("");
-  line(bold(blue("LiveDataLink")) + dim(" - 243 real-time data tools for AI agents"));
-  line(dim("243 tools across 53 domains: finance, sanctions, courts, EIA energy, FRED macro, SEC EDGAR, NREL renewables, geocoding, grants, product-safety, and more"));
+  line(bold(blue("LiveDataLink")) + dim(" - 283 real-time data tools for AI agents"));
+  line(dim("283 tools across 59 domains: finance, sanctions, courts, EIA energy, FRED macro, SEC EDGAR, NREL renewables, geocoding, grants, product-safety, and more"));
   line(dim("https://livedatalink.ai"));
   line("");
 }
@@ -93,7 +93,7 @@ function printHelp() {
   console.log("  --yes               Accept all defaults (non-interactive).");
   console.log("  --help              Show this message.");
   console.log("");
-  console.log("Get a free API key (100 queries/month, no card): " + SIGNUP_URL);
+  console.log("Get a free API key (1,000 queries/month, no card): " + SIGNUP_URL);
   console.log("");
 }
 
@@ -299,7 +299,7 @@ async function promptYesNo(question, defaultYes = true) {
       console.log(red("error: --yes was passed but no API key was provided. Use --key=<key>."));
       process.exit(1);
     }
-    console.log(`Get a free API key (100 queries/month, no card): ${blue(SIGNUP_URL)}`);
+    console.log(`Get a free API key (1,000 queries/month, no card): ${blue(SIGNUP_URL)}`);
     console.log(`Paid plans from $10/month: ${blue(PRICING_URL)}`);
     console.log("");
     apiKey = await prompt(magenta("Paste your LiveDataLink API key (input hidden): "), true);
