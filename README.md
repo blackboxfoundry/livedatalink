@@ -44,6 +44,23 @@ Three ways to scope, in order of convenience:
 
 You are never stuck with a narrow set: `search_available_datasets` and `list_tool_groups` are loaded on **every** profile, cost no credits, and let your agent discover anything in the catalog and tell you which group to add.
 
+### Docker / stdio bridge
+
+LiveDataLink is hosted, so there is no server process to build from this repo. For clients or sandboxes that require a stdio command rather than a URL, the repo ships a `Dockerfile` that bridges stdio to the hosted endpoint via `mcp-remote`:
+
+```bash
+docker build -t livedatalink .
+docker run -i --rm -e LIVEDATALINK_API_KEY=your_key livedatalink
+```
+
+Equivalent without Docker:
+
+```bash
+npx mcp-remote "https://livedatalink.ai/mcp?profile=starter"
+```
+
+Both default to the starter profile. Point `LIVEDATALINK_ENDPOINT` at a `?groups=` URL or the bare endpoint to load more. `tools/list` works without a key, so discovery and introspection do not require credentials.
+
 ### CLI installer
 
 The repo ships a cross-platform installer that detects your installed clients and writes the config for you:
