@@ -1,4 +1,4 @@
-name: Sync tool count
+name: Sync tool and domain counts
 
 on:
   schedule:
@@ -28,8 +28,13 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add README.md package.json
-            git commit -m "chore: sync tool count from live catalog"
+            # Stage everything the script touches. This was previously
+            # "git add README.md package.json", which is half the reason
+            # smithery.yaml, glama.json and server.json drifted: even when the
+            # counts were recomputed, the manifests the directories actually
+            # read were never committed.
+            git add -A
+            git commit -m "chore: sync tool and domain counts from live catalog"
             git push
           else
             echo "No changes."
