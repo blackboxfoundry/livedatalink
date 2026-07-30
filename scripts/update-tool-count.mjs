@@ -1,70 +1,149 @@
 #!/usr/bin/env node
-// Auto-updates the tool count across repo docs from the canonical live catalog.
-// Source of truth: https://livedatalink.ai/tools (mirrors tools/list at /mcp).
-// Counts actual tool entries rather than trusting any prose number.
+// Keeps the advertised tool/domain counts in sync with the live catalog across
+// EVERY file a directory reads, not just the human-facing docs.
+//
+// Source of truth: https://livedatalink.ai/health, which reports the counts the
+// server actually serves. (The previous version scraped /tools and only touched
+// README.md and package.json, which is why smithery.yaml, glama.json and
+// server.json silently drifted to 283/59 and 257/56 while live was 284/59.
+// Those three are exactly the files Smithery, Glama and the MCP Registry read.)
+//
 // Usage: node scripts/update-tool-count.mjs [--check]
-// --check exits non-zero if files are out of date (no writes).
+//   --check  exit non-zero if anything is stale, write nothing (for CI)
 
 import { readFile, writeFile } from "node:fs/promises";
 
-const CATALOG_URL = "https://livedatalink.ai/tools";
-const FILES = { readme: "README.md", pkg: "package.json" };
+const HEALTH_URL = "https://livedatalink.ai/health";
 const CHECK = process.argv.includes("--check");
 
-async function fetchToolCount() {
-    const res = await fetch(CATALOG_URL, { headers: { accept: "text/html" } });
-    if (!res.ok) throw new Error("Catalog fetch failed: " + res.status);
-    const html = await res.text();
-    // Each domain heading is rendered as "Domain Name (N)" / "(N tools)".
-  // Sum the per-domain counts for a robust total.
-  const counts = [...html.matchAll(/\((\d+)\s*tools?\)/gi)].map((m) => Number(m[1]));
-    let total = counts.reduce((a, b) => a + b, 0);
-    // Fallback: the page title advertises the headline number.
-  if (!total) {
-        const t = html.match(/([0-9]{2,4})\s+Tools/i);
-        if (t) total = Number(t[1]);
-  }
-    if (!total || Number.isNaN(total)) throw new Error("Could not derive tool count");
-    return total;
+/** Files that carry a count, and are read by a directory or a human. */
+const FILES = [
+  "README.md",
+  "package.json",
+  "smithery.yaml",   // Smithery listing
+  "glama.json",      // Glama listing
+  "server.json",     // Official MCP Registry (a change here triggers publish)
+  "llms-install.md",
+];
+
+async function liveCounts() {
+  const res = await fetch(HEALTH_URL, { headers: { accept: "application/json" } });
+  if (!res.ok) throw new Error("Health fetch failed: " + res.status);
+  const j = await res.json();
+  const tools = Number(j.tools);
+  const domains = Number(j.domains);
+  if (!tools || !domains) throw new Error("Health did not report tools/domains");
+  return { tools, domains };
 }
 
-function applyCount(text, count) {
-    // Replaces "<number> tools" and "<number> real-time data tools" patterns.
+/**
+ * Rewrite every count-bearing phrase we use anywhere.
+ *
+ * Deliberately phrase-anchored rather than a bare \d+ sweep: a blind numeric
+ * replace would corrupt version strings, ports, prices and the free-tier
+ * allowance. Each pattern below is one way we actually write the number.
+ */
+function applyCounts(text, { tools, domains }) {
   return text
-      .replace(/\b\d{2,4}\s+real-time data tools\b/g, count + " real-time data tools")
-      .replace(/\ball\s+\d{2,4}\s+tools\b/g, "all " + count + " tools")
-      .replace(/\b\d{2,4}\s+tools\.\s+50\+/g, count + " tools. 50+");
+    // "283 tools", "283 real-time data tools", "283 production tools"
+    .replace(/\b\d{2,4}(\s+(?:real-time data|production))?\s+tools\b/gi, (m) =>
+      m.replace(/^\d{2,4}/, String(tools)))
+    // "all 283 tools"
+    .replace(/\ball\s+\d{2,4}\s+tools\b/gi, `all ${tools} tools`)
+    // "59 domains", "59 US public-data domains", "59 live data domains"
+    .replace(/\b\d{1,3}(\s+(?:US public-data|live data|data))?\s+domains\b/gi, (m) =>
+      m.replace(/^\d{1,3}/, String(domains)))
+    // badge shields: tools-283-blue / domains-59-blue
+    .replace(/badge\/tools-\d{2,4}-/g, `badge/tools-${tools}-`)
+    .replace(/badge\/domains-\d{1,3}-/g, `badge/domains-${domains}-`)
+    // package.json "mcp" block: "tools": 283 / "domains": 59
+    .replace(/("tools"\s*:\s*)\d{2,4}/g, `$1${tools}`)
+    .replace(/("domains"\s*:\s*)\d{1,3}/g, `$1${domains}`);
+}
+
+const REGISTRY_URL =
+  "https://registry.modelcontextprotocol.io/v0/servers?search=livedatalink";
+
+const parseVer = (v) => {
+  const m = /^(\d+)\.(\d+)\.(\d+)$/.exec(String(v).trim());
+  if (!m) throw new Error("Unparseable version: " + v);
+  return m.slice(1, 4).map(Number);
+};
+const cmpVer = (a, b) => {
+  const [x, y] = [parseVer(a), parseVer(b)];
+  for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return x[i] - y[i];
+  return 0;
+};
+
+/** Version currently published to the MCP Registry, or null if unreachable. */
+async function publishedVersion() {
+  try {
+    const res = await fetch(REGISTRY_URL, { headers: { accept: "application/json" } });
+    if (!res.ok) return null;
+    const j = await res.json();
+    const latest = (j.servers || []).find(
+      (s) => s._meta?.["io.modelcontextprotocol.registry/official"]?.isLatest,
+    );
+    return latest?.server?.version ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Next version for server.json.
+ *
+ * The registry rejects a re-publish of a version it already has, so an accurate
+ * description would never land without a bump. It also must never go BACKWARDS:
+ * the repo copy sat at 1.4.0 while the registry served 1.5.0, so a naive
+ * local-only patch bump would have produced 1.4.1 and either failed to publish
+ * or regressed the listing. Bump from whichever is higher.
+ */
+function bumpPatch(localVersion, published) {
+  const base =
+    published && cmpVer(published, localVersion) > 0 ? published : localVersion;
+  const [maj, min, patch] = parseVer(base);
+  return `${maj}.${min}.${patch + 1}`;
 }
 
 async function run() {
-    const count = await fetchToolCount();
-    console.log("Live tool count:", count);
-    let dirty = false;
+  const counts = await liveCounts();
+  console.log(`Live: ${counts.tools} tools / ${counts.domains} domains`);
+  const published = await publishedVersion();
+  console.log("Registry currently serves:", published ?? "(unreachable)");
 
-  const readme = await readFile(FILES.readme, "utf8");
-    const readmeNext = applyCount(readme, count);
-    if (readmeNext !== readme) {
-          dirty = true;
-          if (!CHECK) await writeFile(FILES.readme, readmeNext);
+  const stale = [];
+  for (const file of FILES) {
+    const before = await readFile(file, "utf8");
+    let after = applyCounts(before, counts);
+
+    if (file === "server.json") {
+      const parsed = JSON.parse(after);
+      // Bump when the counts changed, OR when the repo has fallen behind the
+      // registry (which is how it ended up at 1.4.0 against a live 1.5.0).
+      const behind = published && cmpVer(published, parsed.version) > 0;
+      if (after !== before || behind) {
+        parsed.version = bumpPatch(parsed.version, published);
+        after = JSON.stringify(parsed, null, 2) + "\n";
+        console.log(`  server.json version -> ${parsed.version} (publishes to the registry)`);
+      }
     }
 
-  const pkgRaw = await readFile(FILES.pkg, "utf8");
-    const pkg = JSON.parse(pkgRaw);
-    const descNext = applyCount(pkg.description, count);
-    if (descNext !== pkg.description) {
-          dirty = true;
-          pkg.description = descNext;
-          if (!CHECK) await writeFile(FILES.pkg, JSON.stringify(pkg, null, 2) + "\n");
+    if (after !== before) {
+      stale.push(file);
+      if (!CHECK) await writeFile(file, after);
     }
-
-  if (CHECK && dirty) {
-        console.error("Docs are out of date. Run: node scripts/update-tool-count.mjs");
-        process.exit(1);
   }
-    console.log(dirty ? "Updated docs." : "Docs already current.");
+
+  if (CHECK && stale.length) {
+    console.error("Stale counts in: " + stale.join(", "));
+    console.error("Run: node scripts/update-tool-count.mjs");
+    process.exit(1);
+  }
+  console.log(stale.length ? "Updated: " + stale.join(", ") : "All files already current.");
 }
 
 run().catch((e) => {
-    console.error(e);
-    process.exit(1);
+  console.error(e);
+  process.exit(1);
 });

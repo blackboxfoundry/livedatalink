@@ -32,7 +32,7 @@ Replace `USER_API_KEY_HERE` with the actual API Key the user obtained above. Do 
 
 ## Verification
 
-After configuration, verify the connection by calling `tools/list`. Expected response is a JSON-RPC object containing 283 tools across 59 domains. If the response is `401 INVALID_API_KEY`, the API Key is wrong or deactivated. If the response is `429 RATE_LIMIT`, the user has exceeded their tier's per-minute limit (5 for free, 30 for Starter, 120 for Pro).
+After configuration, verify the connection by calling `tools/list`. Expected response is a JSON-RPC object containing 284 tools across 59 domains. If the response is `401 INVALID_API_KEY`, the API Key is wrong or deactivated. If the response is `429 RATE_LIMIT`, the user has exceeded their tier's per-minute limit (5 for free, 30 for Starter, 120 for Pro).
 
 ## Recommended first call
 

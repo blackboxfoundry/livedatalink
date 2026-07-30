@@ -1,8 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.blackboxfoundry/livedatalink",
-  "description": "257 tools across 56 US public-data domains: sanctions, FMCSA, SEC, courts, energy. Free tier.",
-  "version": "1.4.0",
+  "description": "One key for 284 tools across 59 US public-data domains. Resale-safe government and open data.",
+  "title": "LiveDataLink",
+  "version": "1.5.1",
   "websiteUrl": "https://livedatalink.ai",
   "repository": {
     "url": "https://github.com/blackboxfoundry/livedatalink",
@@ -11,7 +12,14 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://livedatalink.ai/mcp"
+      "url": "https://livedatalink.ai/mcp",
+      "headers": [
+        {
+          "description": "Bearer <api key>. Optional for evaluation. Free key, no card: https://livedatalink.ai/signup/free",
+          "isSecret": true,
+          "name": "Authorization"
+        }
+      ]
     }
   ]
 }

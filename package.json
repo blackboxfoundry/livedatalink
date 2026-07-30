@@ -19,7 +19,7 @@
   "engines": {
     "node": ">=18"
   },
-  "description": "283 real-time data tools across 59 domains for AI agents via MCP. Finance, options, crypto, FMCSA, sanctions, federal courts, weather, vehicles, cybersecurity (CVE/EPSS/KEV), FEMA, property, college metrics, EIA energy, FRED Federal Reserve macroeconomics, SEC EDGAR filings, NREL renewables, geocoding, federal grants, CPSC product-safety. One bearer token, one bill. Free tier available.",
+  "description": "284 real-time data tools across 59 domains for AI agents via MCP. Finance, options, crypto, FMCSA, sanctions, federal courts, weather, vehicles, cybersecurity (CVE/EPSS/KEV), FEMA, property, college metrics, EIA energy, FRED Federal Reserve macroeconomics, SEC EDGAR filings, NREL renewables, geocoding, federal grants, CPSC product-safety. One bearer token, one bill. Free tier available.",
   "homepage": "https://livedatalink.ai",
   "license": "MIT",
   "author": "Blackbox Foundry LLC <support@livedatalink.ai>",
@@ -70,7 +70,7 @@
   "mcp": {
     "endpoint": "https://livedatalink.ai/mcp",
     "transport": "streamable-http",
-    "tools": 283,
+    "tools": 284,
     "domains": 59,
     "freeTier": true,
     "documentation": "https://livedatalink.ai/tools",
