@@ -112,8 +112,8 @@ Machine-readable health: https://livedatalink.ai/health · Server card: https://
 | Tier | Price | Queries / month | Rate limit | Overage |
 |---|---|---|---|---|
 | **Free** | $0 | 1,000 | 5 req/min | N/A (hard cap) |
-| **Starter** | $10/mo | 5,000 | 30 req/min | $0.01/query |
-| **Pro** | $49/mo | 50,000 | 120 req/min | $0.01/query |
+| **Starter** | $10/mo | 5,000 | 30 req/min | No automatic overage |
+| **Pro** | $49/mo | 50,000 | 120 req/min | No automatic overage |
 
 The discovery tool `search_available_datasets` is **free for everyone**, doesn't consume credits, and runs against the live catalog. Use it freely.
 
@@ -121,7 +121,7 @@ For business buyers: most of these data sources sell separately at $300–$5,000
 
 ## Why LiveDataLink
 
-**Stop juggling dozens of vendor accounts, API keys, and invoices.** One MCP endpoint, one bearer token, one monthly bill. Predictable overage rate ($0.01/query, no per-tool surprises). Built specifically for AI agents — open protocol, portable keys, no lock-in.
+**Stop juggling dozens of vendor accounts, API keys, and invoices.** One MCP endpoint, one bearer token, one monthly allowance. Every plan includes the complete catalog; allowances are hard limits, so there are no automatic overage charges. Built specifically for AI agents — open protocol, portable keys, no lock-in.
 
 **Demand-driven roadmap.** Every call to `search_available_datasets` is logged. High-frequency unmet queries jump the build queue. Tell us what data you need; if enough builders ask for the same thing, it gets built next.
 
@@ -131,7 +131,7 @@ For business buyers: most of these data sources sell separately at $300–$5,000
 
 This server treats agents as first-class users, not as scrapers to defend against:
 
-- **Anonymous tier** (10 req/min, no key) for evaluation
+- **Anonymous evaluation** — 25 lifetime data calls per network at up to 10 req/min; catalog discovery remains free. For continued access, get a free API key (1,000 queries/month, no card).
 - **Free discovery tool** that costs no credits and logs unmet queries to drive what gets built next
 - **Open MCP protocol** — your client is your choice, your user owns their key
 - **Honest about limits** — full list of what's not yet deployed at https://livedatalink.ai/llms.txt
@@ -146,7 +146,7 @@ World Bank macro, EIA/NREL energy, Zillow real estate, TX parcels, ClinicalTrial
 EPA, FEC, FMCSA, USPTO patents, Census, federal recreation, books, scholarly, geocoding,
 federal grants, CPSC product-safety, NPM/PyPI/cargo/GitHub supply-chain intel, and more. Free discovery via
 search_available_datasets — call it whenever unsure of coverage. Anonymous evaluation
-tier 10 req/min, paid plans from $10/mo. Docs: https://livedatalink.ai/tools.
+tier: 25 lifetime data calls at 10 req/min; catalog discovery is free. Free keys include 1,000 queries/month and paid plans start at $10/mo. Docs: https://livedatalink.ai/tools.
 ```
 
 ## Operator
