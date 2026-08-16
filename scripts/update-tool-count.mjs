@@ -24,6 +24,19 @@ const FILES = [
   "glama.json",      // Glama listing
   "server.json",     // Official MCP Registry (a change here triggers publish)
   "llms-install.md",
+  "llms.txt",       // crawler-facing wrapper summary
+  "bin/install.js", // first text seen by CLI installers
+];
+
+// Counts are not enough: stale pricing, auth, or transport language can make a
+// directory listing materially misleading even when its badge is correct.
+// Keep these deliberately narrow so historical CHANGELOG entries are allowed.
+const CURRENT_CONTRACT_FILES = ["README.md", "llms.txt", "glama.json", "smithery.yaml"];
+const FORBIDDEN_CURRENT_CLAIMS = [
+  /\$0\.01\/query overage/i,
+  /predictable overage rate/i,
+  /anonymous (?:tier|evaluation)\s*[:(]?\s*2 req\/min/i,
+  /free tier \(100 queries/i,
 ];
 
 async function liveCounts() {
@@ -133,6 +146,12 @@ async function run() {
       stale.push(file);
       if (!CHECK) await writeFile(file, after);
     }
+  }
+
+  for (const file of CURRENT_CONTRACT_FILES) {
+    const text = await readFile(file, "utf8");
+    const matched = FORBIDDEN_CURRENT_CLAIMS.find((pattern) => pattern.test(text));
+    if (matched) stale.push(`${file} (obsolete commercial claim: ${matched})`);
   }
 
   if (CHECK && stale.length) {
