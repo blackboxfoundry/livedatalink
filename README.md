@@ -1,6 +1,6 @@
 # LiveDataLink MCP Server
 
-> Real-time data for AI agents. 284 tools across 59 domains. One MCP endpoint, one API Key, one bill.
+> Live and regularly refreshed public data for AI agents. 284 tools across 59 domains. One MCP endpoint, one API key, one bill.
 
 [![Status](https://img.shields.io/badge/status-live-success)](https://livedatalink.ai)
 [![Tools](https://img.shields.io/badge/tools-284-blue)](https://livedatalink.ai/tools)
@@ -82,7 +82,7 @@ curl -X POST https://livedatalink.ai/mcp \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}'
 ```
 
-## What's in the catalog
+## Tools
 
 284 production tools across 59 live data domains. Coverage by category:
 
