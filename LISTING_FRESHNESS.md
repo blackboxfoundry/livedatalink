@@ -23,6 +23,7 @@ Machine-readable sources: [`/health`](https://livedatalink.ai/health), [server c
 
 - Confirmed the claimed MCP.so publisher editor still contains obsolete copy (182 tools / 36 domains, 100 free queries, automatic overages) despite its correctly configured hosted endpoint. The current submission is ready for a corrected save and a subsequent manual re-index request for the missing tool extraction.
 - The public wrapper README now leads with source-varying freshness language and an explicit `## Tools` section for directory extractors. Recheck every dependent directory after the repository release rather than assuming its crawler refreshes automatically.
+- Direct fetches of `https://livedatalink.ai/tools` and `https://livedatalink.ai/llms.txt` now return the current 284-tool / 59-domain copy, 25-result anonymous evaluation, 1,000-query free key, and fixed-allowance pricing. Search-engine snippets can still show the older 100-tool / 2-rpm / overage copy; treat those as cache lag and recheck after the next crawl.
 
 | Listing family | Evidence of stale state | Control and remediation | State | Review cadence |
 | --- | --- | --- | --- | --- |
