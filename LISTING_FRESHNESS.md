@@ -19,6 +19,11 @@ Machine-readable sources: [`/health`](https://livedatalink.ai/health), [server c
 
 ## Discovered inventory — 2026-08-16
 
+### Audit update — 2026-08-17
+
+- Confirmed the claimed MCP.so publisher editor still contains obsolete copy (182 tools / 36 domains, 100 free queries, automatic overages) despite its correctly configured hosted endpoint. The current submission is ready for a corrected save and a subsequent manual re-index request for the missing tool extraction.
+- The public wrapper README now leads with source-varying freshness language and an explicit `## Tools` section for directory extractors. Recheck every dependent directory after the repository release rather than assuming its crawler refreshes automatically.
+
 | Listing family | Evidence of stale state | Control and remediation | State | Review cadence |
 | --- | --- | --- | --- | --- |
 | Public GitHub wrapper (`blackboxfoundry/livedatalink`) | Repository description said 283; README and `llms.txt` retained old overage and anonymous wording. | Update manifests, README, wrapper `llms.txt`, installer text; CI validates its static contract. | Corrected and released 2026-08-16 | Every release + weekly |
