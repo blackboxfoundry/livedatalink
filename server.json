@@ -3,7 +3,7 @@
   "name": "io.github.blackboxfoundry/livedatalink",
   "description": "284 public-data tools across 59 domains; freshness varies. Free tier.",
   "title": "LiveDataLink",
-  "version": "1.6.3",
+  "version": "1.6.5",
   "websiteUrl": "https://livedatalink.ai",
   "repository": {
     "url": "https://github.com/blackboxfoundry/livedatalink",

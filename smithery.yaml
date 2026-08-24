@@ -1,7 +1,7 @@
 runtime: "remote"
 name: "livedatalink"
 displayName: "LiveDataLink"
-description: "284 tools across 59 US public-data domains for AI agents. Sanctions screening (OFAC/UN/EU/BIS first-party), SEC EDGAR, federal courts plus Caselaw Access Project, IRS nonprofits, NPPES healthcare providers, USAspending federal awards, Federal Register + eCFR, CVE + threat intel (RDAP, IP reputation, FBI Wanted), FRED + BLS + US Treasury + World Bank macro, EIA + NREL + oil & gas energy, Zillow ZHVI/ZORI real estate, TX parcels, FDA, EPA, FEC, FMCSA carrier safety, USPTO patents, Census, federal recreation (RIDB), books and scholarly, geocoding, federal grants, CPSC product-safety, NPM/PyPI/cargo/GitHub supply-chain intel, plus scored cross-source due-diligence combos. Resale-safe public data. One bearer token, one endpoint, one bill. Free tier (1,000 queries/month, no card)."
+description: "290 tools across 59 US public-data domains for AI agents. Sanctions screening (OFAC/UN/EU/BIS first-party), SEC EDGAR, federal courts plus Caselaw Access Project, IRS nonprofits, NPPES healthcare providers, USAspending federal awards, Federal Register + eCFR, CVE + threat intel (RDAP, IP reputation, FBI Wanted), FRED + BLS + US Treasury + World Bank macro, EIA + NREL + oil & gas energy, Zillow ZHVI/ZORI real estate, TX parcels, FDA, EPA, FEC, FMCSA carrier safety, USPTO patents, Census, federal recreation (RIDB), books and scholarly, geocoding, federal grants, CPSC product-safety, NPM/PyPI/cargo/GitHub supply-chain intel, plus scored cross-source due-diligence combos. Resale-safe public data. One bearer token, one endpoint, one bill. Free tier (1,000 queries/month, no card)."
 homepage: "https://livedatalink.ai"
 icon: "https://livedatalink.ai/logo.png"
 remote:

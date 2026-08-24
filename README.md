@@ -1,9 +1,9 @@
 # LiveDataLink MCP Server
 
-> Live and regularly refreshed public data for AI agents. 284 tools across 59 domains. One MCP endpoint, one API key, one bill.
+> Live and regularly refreshed public data for AI agents. 290 tools across 59 domains. One MCP endpoint, one API key, one bill.
 
 [![Status](https://img.shields.io/badge/status-live-success)](https://livedatalink.ai)
-[![Tools](https://img.shields.io/badge/tools-284-blue)](https://livedatalink.ai/tools)
+[![Tools](https://img.shields.io/badge/tools-290-blue)](https://livedatalink.ai/tools)
 [![Domains](https://img.shields.io/badge/domains-59-blue)](https://livedatalink.ai/tools)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -32,7 +32,7 @@ That's it. Works with Claude Desktop, Claude Code, Cursor, Cline, Zed, and anyth
 
 ### Start scoped, then widen
 
-**Load a subset of the catalog, not all of it.** The full catalog is 284 tools — about 86,000 tokens of tool definitions before you type anything. Most clients get measurably worse at picking the right tool past ~50, and **Cursor caps MCP tools at 40 and silently ignores the rest**, so an unscoped connection there hides most of the catalog with no error.
+**Load a subset of the catalog, not all of it.** The full catalog is 290 tools — about 86,000 tokens of tool definitions before you type anything. Most clients get measurably worse at picking the right tool past ~50, and **Cursor caps MCP tools at 40 and silently ignores the rest**, so an unscoped connection there hides most of the catalog with no error.
 
 Three ways to scope, in order of convenience:
 
@@ -84,7 +84,7 @@ curl -X POST https://livedatalink.ai/mcp \
 
 ## Tools
 
-284 production tools across 59 live data domains. Coverage by category:
+290 production tools across 59 live data domains. Coverage by category:
 
 | Category group | Domains |
 |---|---|
