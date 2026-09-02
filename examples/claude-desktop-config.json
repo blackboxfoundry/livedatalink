@@ -1,9 +1,11 @@
 {
   "mcpServers": {
     "livedatalink": {
-      "url": "https://livedatalink.ai/mcp?profile=starter",
+      "type": "http",
+      "url": "https://livedatalink.ai/mcp",
       "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
+        "Authorization": "Bearer YOUR_API_KEY",
+        "Accept": "application/json, text/event-stream"
       }
     }
   }

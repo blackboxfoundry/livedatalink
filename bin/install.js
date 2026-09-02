@@ -30,9 +30,9 @@ const readline = require("readline");
 // Constants
 // -------------------------------------------------------------------
 
-const LIVEDATALINK_URL = "https://livedatalink.ai/mcp?profile=starter";
+const LIVEDATALINK_URL = "https://livedatalink.ai/mcp";
 const SIGNUP_URL = "https://livedatalink.ai/signup/free";
-const PRICING_URL = "https://livedatalink.ai/#pricing";
+const PRICING_URL = "https://livedatalink.ai/pricing";
 const TOOL_KEY = "livedatalink";
 
 // -------------------------------------------------------------------
@@ -171,8 +171,9 @@ function mergeMcpServers(cfg, apiKey) {
   if (typeof cfg !== "object" || cfg === null) cfg = {};
   if (typeof cfg.mcpServers !== "object" || cfg.mcpServers === null) cfg.mcpServers = {};
   cfg.mcpServers[TOOL_KEY] = {
+    type: "http",
     url: LIVEDATALINK_URL,
-    headers: { Authorization: `Bearer ${apiKey}` },
+    headers: { Authorization: `Bearer ${apiKey}`, Accept: "application/json, text/event-stream" },
   };
   return cfg;
 }
@@ -189,7 +190,7 @@ function mergeContinue(cfg, apiKey) {
   const entry = {
     name: TOOL_KEY,
     transport: { type: "streamable-http", url: LIVEDATALINK_URL },
-    headers: { Authorization: `Bearer ${apiKey}` },
+    headers: { Authorization: `Bearer ${apiKey}`, Accept: "application/json, text/event-stream" },
   };
   if (existing >= 0) cfg.mcpServers[existing] = entry;
   else cfg.mcpServers.push(entry);
@@ -211,7 +212,7 @@ function mergeZed(cfg, apiKey) {
     command: "remote",
     transport: "streamable-http",
     url: LIVEDATALINK_URL,
-    headers: { Authorization: `Bearer ${apiKey}` },
+    headers: { Authorization: `Bearer ${apiKey}`, Accept: "application/json, text/event-stream" },
   };
   return cfg;
 }
