@@ -11,7 +11,7 @@ LiveDataLink is a hosted MCP (Model Context Protocol) server that gives AI agent
 
 ## Install
 
-Get a free API key first (1,000 queries/month, no credit card): https://livedatalink.ai/signup/free — it arrives by email within seconds.
+Get a free API key first (1,000 queries/month, no credit card): https://livedatalink.ai/signup/free.
 
 Then add this to your MCP client's config:
 
@@ -19,7 +19,7 @@ Then add this to your MCP client's config:
 {
   "mcpServers": {
     "livedatalink": {
-      "url": "https://livedatalink.ai/mcp?profile=starter",
+      "url": "https://livedatalink.ai/mcp",
       "headers": {
         "Authorization": "Bearer YOUR_API_KEY"
       }
@@ -30,20 +30,11 @@ Then add this to your MCP client's config:
 
 That's it. Works with Claude Desktop, Claude Code, Cursor, Cline, Zed, and anything else that speaks Streamable HTTP. Continue uses a slightly different shape; see `llms-install.md` for the canonical config block per client.
 
-### Start scoped, then widen
+### Connect the catalog you need
 
-**Load a subset of the catalog, not all of it.** The full catalog is 290 tools — about 86,000 tokens of tool definitions before you type anything. Most clients get measurably worse at picking the right tool past ~50, and **Cursor caps MCP tools at 40 and silently ignores the rest**, so an unscoped connection there hides most of the catalog with no error.
+The base endpoint loads the complete catalog: 290 tools across 59 domains. For an interactive client with a smaller tool limit, use `?groups=` to load only the relevant groups. For example, `https://livedatalink.ai/mcp?groups=finance,courts` loads finance and courts tools; call `list_tool_groups` to see available groups.
 
-Three ways to scope, in order of convenience:
-
-| URL | What loads |
-|---|---|
-| `…/mcp?profile=starter` | **16 hand-picked tools** spanning every major domain. The recommended default. |
-| `…/mcp?groups=finance,courts` | Only the groups you name. Call `list_tool_groups` to see all 32. |
-| `…/mcp` | The full catalog. Fine for servers and scripts, not for interactive clients. |
-
-You are never stuck with a narrow set: `search_available_datasets` and `list_tool_groups` are loaded on **every** profile, cost no credits, and let your agent discover anything in the catalog and tell you which group to add.
-
+`search_available_datasets` and `list_tool_groups` are always available, do not consume credits, and help an agent discover which group to add.
 ### Docker / stdio bridge
 
 LiveDataLink is hosted, so there is no server process to build from this repo. For clients or sandboxes that require a stdio command rather than a URL, the repo ships a `Dockerfile` that bridges stdio to the hosted endpoint via `mcp-remote`:
@@ -56,10 +47,10 @@ docker run -i --rm -e LIVEDATALINK_API_KEY=your_key livedatalink
 Equivalent without Docker:
 
 ```bash
-npx mcp-remote "https://livedatalink.ai/mcp?profile=starter"
+npx mcp-remote "https://livedatalink.ai/mcp"
 ```
 
-Both default to the starter profile. Point `LIVEDATALINK_ENDPOINT` at a `?groups=` URL or the bare endpoint to load more. `tools/list` works without a key, so discovery and introspection do not require credentials.
+Both use the full endpoint by default. Point `LIVEDATALINK_ENDPOINT` at a `?groups=` URL when you want a smaller, task-specific catalog. `tools/list` works without a key, so discovery and introspection do not require credentials.
 
 ### CLI installer
 
