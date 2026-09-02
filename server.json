@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.blackboxfoundry/livedatalink",
-  "description": "290 public-data tools across 59 domains; source freshness varies. Free tier.",
+  "description": "291 public-data tools across 59 domains; source freshness varies. Free tier.",
   "title": "LiveDataLink",
-  "version": "1.6.6",
+  "version": "1.6.7",
   "websiteUrl": "https://livedatalink.ai",
   "repository": {
     "url": "https://github.com/blackboxfoundry/livedatalink",
