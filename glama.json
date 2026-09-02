@@ -3,5 +3,5 @@
     "maintainers": [
         "blackboxfoundry-ops"
     ],
-    "description": "LiveDataLink is a hosted MCP server giving AI agents 291 tools across 59 public-data domains: sanctions screening, FMCSA carrier safety, SEC EDGAR, courts, cybersecurity/CVE, FEMA disasters, FRED macro, EIA energy, US Treasury, Census, FDA, EPA, FEC, USAspending, NPI healthcare, patents, nonprofits, real estate, and cross-source due-diligence workflows. One bearer key, free tier (1,000 queries/month, no card). Freshness, coverage, and upstream terms vary by source. Connect scoped with ?profile=starter or ?groups=; see the README."
+        "description": "LiveDataLink is a hosted MCP server giving AI agents 291 tools across 59 public-data domains: sanctions screening, FMCSA carrier safety, SEC EDGAR, courts, cybersecurity/CVE, FEMA disasters, FRED macro, EIA energy, US Treasury, Census, FDA, EPA, FEC, USAspending, NPI healthcare, patents, nonprofits, real estate, and cross-source due-diligence workflows. One bearer key, free tier (1,000 queries/month, no card). Freshness, coverage, and upstream terms vary by source. Connect to the full endpoint or scope the catalog with ?groups=; see the README."
 }

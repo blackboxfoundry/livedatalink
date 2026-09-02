@@ -1,6 +1,6 @@
 # LiveDataLink
 
-> Live and regularly refreshed public data for AI agents: 284 MCP tools across 59 domains, one Streamable HTTP endpoint, and one bearer API key.
+> Live and regularly refreshed public data for AI agents: 291 MCP tools across 59 domains, one Streamable HTTP endpoint, and one bearer API key.
 
 This repository is a distribution wrapper. The hosted server is authoritative; do not treat a static copy of a tool list in this repository as current.
 

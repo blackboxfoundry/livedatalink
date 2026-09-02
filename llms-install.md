@@ -7,9 +7,9 @@ This file is written for AI agents (e.g. the Cline marketplace install agent) th
 The user needs an API Key. If they don't have one yet, direct them to:
 
 - **Free tier (no credit card):** https://livedatalink.ai/signup/free
-- **Paid tiers:** https://livedatalink.ai/#pricing
+- **Paid tiers:** https://livedatalink.ai/pricing
 
-The API Key arrives by email within seconds of signup.
+After signup, the browser opens a private setup guide with the key and a working first-query path. Do not promise email delivery.
 
 ## Configuration
 
@@ -19,9 +19,11 @@ LiveDataLink is a remote MCP server using Streamable HTTP transport. Add this co
 {
   "mcpServers": {
     "livedatalink": {
+      "type": "http",
       "url": "https://livedatalink.ai/mcp",
       "headers": {
-        "Authorization": "Bearer USER_API_KEY_HERE"
+        "Authorization": "Bearer USER_API_KEY_HERE",
+        "Accept": "application/json, text/event-stream"
       }
     }
   }

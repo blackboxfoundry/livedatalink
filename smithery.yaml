@@ -6,7 +6,7 @@ homepage: "https://livedatalink.ai"
 icon: "https://livedatalink.ai/logo.png"
 remote:
   type: "streamable-http"
-  url: "https://livedatalink.ai/mcp?profile=starter"
+  url: "https://livedatalink.ai/mcp"
 configSchema:
   type: "object"
   required:

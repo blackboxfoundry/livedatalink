@@ -19,9 +19,11 @@ Then add this to your MCP client's config:
 {
   "mcpServers": {
     "livedatalink": {
+      "type": "http",
       "url": "https://livedatalink.ai/mcp",
       "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
+        "Authorization": "Bearer YOUR_API_KEY",
+        "Accept": "application/json, text/event-stream"
       }
     }
   }
