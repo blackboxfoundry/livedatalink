@@ -46,7 +46,7 @@ We aim to review PRs within a week. Maintained by Blackbox Foundry LLC.
 
 - **GitHub Issues** — tool requests, bug reports, documentation feedback
 - **Email** — support@livedatalink.ai for account issues, billing questions, partnership inquiries
-- A real human responds within 24 hours
+- Support timing varies; do not promise a response deadline.
 
 ## License
 

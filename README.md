@@ -94,7 +94,7 @@ curl -X POST https://livedatalink.ai/mcp \
 
 Representative sources behind these domains: first-party indexed OFAC SDN + UN + EU + BIS DPL sanctions screening, CourtListener + Caselaw Access Project, SEC EDGAR, FEC, IRS nonprofits, USAspending, Federal Register + eCFR, EPA ECHO, OpenFDA (drug/device/food), NPPES healthcare, ClinicalTrials.gov, CVE/CWE/EPSS/CISA KEV, NPM/PyPI/cargo/GitHub supply-chain, equities + options, crypto (CoinGecko), US Treasury FiscalData, FRED, BLS, World Bank, EIA, NREL, Zillow ZHVI/ZORI, TX parcels, FMCSA, NHTSA, IPEDS, FEMA/NFIP/USGS/NWS/NOAA, Census, USPTO, Project Gutenberg, OpenAlex, federal recreation (RIDB), package tracking, Census geocoding, federal grants, and CPSC product-safety recalls.
 
-The always-current, authoritative per-tool breakdown lives on the server itself — call `tools/list` against the endpoint, or read https://livedatalink.ai/tools (machine-readable summary at https://livedatalink.ai/llms.txt). Representative tools include `stock_quote`, `sec_company_filings`, `sanctions_screen`, `court_search`, `weather_current`, `fmcsa_carrier_lookup`, `property_lookup`, `cve_lookup`, and `fred_series`.
+The always-current, authoritative per-tool breakdown lives on the server itself — call `tools/list` against the endpoint, or read https://livedatalink.ai/tools (machine-readable summary at https://livedatalink.ai/llms.txt). Representative tools include `stock_quote`, `edgar_company_lookup`, `sanctions_screen_entity`, `court_case_search`, `weather_current`, `fmcsa_carrier_lookup`, `property_lookup`, `cve_lookup`, and `fred_observations`.
 
 LLM-readable summary: https://livedatalink.ai/llms.txt
 

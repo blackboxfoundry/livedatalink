@@ -2,6 +2,18 @@
 
 All notable changes to LiveDataLink are documented here. The hosted MCP server is the source of truth; this file tracks the user-visible additions.
 
+## [1.6.7] — 2026-09-03
+
+### Changed
+- **Wrapper metadata and examples resynchronized** — the package metadata,
+  registry manifest, README, and machine-readable references now consistently
+  describe the hosted service as 291 tools across 59 public-data domains.
+- **Retired example names removed** — README examples now point at deployed
+  EDGAR, sanctions, court, and FRED tool names. Source freshness varies by
+  connector; call `tools/list` for the live inventory.
+- **Support promise corrected** — public contributor guidance no longer
+  promises a fixed response time.
+
 ## [1.2.1] — 2026-07-17
 
 ### Added
