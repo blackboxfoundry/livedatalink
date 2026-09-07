@@ -53,7 +53,7 @@ function banner() {
   const line = (txt) => console.log(txt);
   line("");
   line(bold(blue("LiveDataLink")) + dim(" - 291 public-data tools for AI agents"));
-  line(dim("291 tools across 59 domains: finance, sanctions, courts, EIA energy, FRED macro, SEC EDGAR, NREL renewables, geocoding, grants, product-safety, and more"));
+  line(dim("294 tools across 60 domains: finance, sanctions, courts, EIA energy, FRED macro, SEC EDGAR, NREL renewables, geocoding, grants, product-safety, and more"));
   line(dim("https://livedatalink.ai"));
   line("");
 }
