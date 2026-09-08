@@ -1,7 +1,7 @@
 runtime: "remote"
 name: "livedatalink"
 displayName: "LiveDataLink"
-description: "294 tools across 59 public-data domains for AI agents. Sanctions screening, SEC EDGAR, courts, IRS nonprofits, NPPES healthcare, USAspending, federal regulations, CVE and threat intel, FRED, BLS, US Treasury, World Bank macro, EIA and NREL energy, Zillow real-estate market data, bounded parcel sources, FDA, EPA, FEC, FMCSA carrier safety, patents, Census, federal grants, product recalls, package registries, and cross-source due-diligence workflows. One bearer token, one endpoint, one bill. Free tier (1,000 queries/month, no card). Freshness, coverage, and upstream terms vary by source."
+description: "LiveDataLink gives AI agents one hosted Streamable HTTP MCP endpoint for source-linked public data across 60 domains. Its 294 tools cover government and regulatory records, financial and economic data, carrier safety, sanctions/KYB, courts, property and real estate, health, energy, patents, nonprofits, and cross-source evidence workflows. Load task-specific tool groups with ?groups=. API-key access includes a free 1,000-query monthly tier, no card. Anonymous evaluation is supported. Coverage, freshness, and upstream requirements vary by source."
 homepage: "https://livedatalink.ai"
 icon: "https://livedatalink.ai/logo.png"
 remote:

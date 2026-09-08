@@ -21,7 +21,7 @@
 FROM node:22-alpine
 
 LABEL org.opencontainers.image.title="LiveDataLink MCP" \
-      org.opencontainers.image.description="Hosted MCP server: 291 public-data tools across 59 domains behind one bearer key." \
+      org.opencontainers.image.description="Hosted MCP server: 294 public-data tools across 60 domains behind one bearer key." \
       org.opencontainers.image.url="https://livedatalink.ai" \
       org.opencontainers.image.source="https://github.com/blackboxfoundry/livedatalink" \
       org.opencontainers.image.licenses="MIT"
