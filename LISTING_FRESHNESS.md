@@ -2,11 +2,17 @@
 
 This is the operating record for public listings and search results that describe LiveDataLink. It prevents directory metadata from becoming a forgotten second product description.
 
+## Current audit — September 8, 2026
+
+Live production is v1.6.9 with 294 tools across 60 domains. This release corrects missed public-data/MCP count phrases, wrapper descriptions, Docker metadata and client guidance. Older dated observations below are historical; see LISTING_COPY.md for current submission facts.
+
+The punkpeye remote-directory submission is merged: https://github.com/punkpeye/awesome-remote-mcp-servers/pull/119. Cline issue 1739 already has the current September 8 update. Directory correction emails to Glama, Smithery, MCP.so and MCPServers.org, plus submissions to MCP Trove and MindPal, were sent September 8; do not duplicate them.
+
 ## Canonical facts
 
 Verify these from the hosted service before changing a listing:
 
-- Catalog: **291 tools / 59 domains**.
+- Catalog: **294 tools / 60 domains**.
 - Endpoint / transport: `https://livedatalink.ai/mcp` / Streamable HTTP.
 - Auth: bearer API key; anonymous evaluation is limited to **25 lifetime data calls per network at 10 rpm**. Catalog discovery and free-key issuance are not metered.
 - Free API key: **1,000 queries/month, 5 rpm, no card**.

@@ -12,6 +12,7 @@
 //   --check  exit non-zero if anything is stale, write nothing (for CI)
 
 import { readFile, writeFile } from "node:fs/promises";
+import { pathToFileURL } from "node:url";
 
 const HEALTH_URL = "https://livedatalink.ai/health";
 const CHECK = process.argv.includes("--check");
@@ -26,6 +27,8 @@ const FILES = [
   "llms-install.md",
   "llms.txt",       // crawler-facing wrapper summary
   "bin/install.js", // first text seen by CLI installers
+  "Dockerfile",    // container description
+  "LISTING_COPY.md", // canonical reusable directory copy
 ];
 
 // Counts are not enough: stale pricing, auth, or transport language can make a
@@ -56,15 +59,15 @@ async function liveCounts() {
  * replace would corrupt version strings, ports, prices and the free-tier
  * allowance. Each pattern below is one way we actually write the number.
  */
-function applyCounts(text, { tools, domains }) {
+export function applyCounts(text, { tools, domains }) {
   return text
     // "283 tools", "283 real-time data tools", "283 production tools"
-    .replace(/\b\d{2,4}(\s+(?:real-time data|production))?\s+tools\b/gi, (m) =>
+    .replace(/\b\d{2,4}(\s+(?:real-time data|public-data|MCP|production))?\s+tools\b/gi, (m) =>
       m.replace(/^\d{2,4}/, String(tools)))
     // "all 283 tools"
     .replace(/\ball\s+\d{2,4}\s+tools\b/gi, `all ${tools} tools`)
     // "59 domains", "59 US public-data domains", "59 live data domains"
-    .replace(/\b\d{1,3}(\s+(?:US public-data|live data|data))?\s+domains\b/gi, (m) =>
+    .replace(/\b\d{1,3}(\s+(?:US public-data|public-data|live data|data))?\s+domains\b/gi, (m) =>
       m.replace(/^\d{1,3}/, String(domains)))
     // badge shields: tools-283-blue / domains-59-blue
     .replace(/badge\/tools-\d{2,4}-/g, `badge/tools-${tools}-`)
@@ -162,7 +165,7 @@ async function run() {
   console.log(stale.length ? "Updated: " + stale.join(", ") : "All files already current.");
 }
 
-run().catch((e) => {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) run().catch((e) => {
   console.error(e);
   process.exit(1);
 });

@@ -1,7 +1,7 @@
 {
-    "$schema": "https://glama.ai/mcp/schemas/server.json",
-    "maintainers": [
-        "blackboxfoundry-ops"
-    ],
-        "description": "LiveDataLink is a hosted MCP server giving AI agents 294 tools across 59 public-data domains: sanctions screening, FMCSA carrier safety, SEC EDGAR, courts, cybersecurity/CVE, FEMA disasters, FRED macro, EIA energy, US Treasury, Census, FDA, EPA, FEC, USAspending, NPI healthcare, patents, nonprofits, real estate, and cross-source due-diligence workflows. One bearer key, free tier (1,000 queries/month, no card). Freshness, coverage, and upstream terms vary by source. Connect to the full endpoint or scope the catalog with ?groups=; see the README."
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "maintainers": [
+    "blackboxfoundry-ops"
+  ],
+  "description": "LiveDataLink gives AI agents one hosted Streamable HTTP MCP endpoint for source-linked public data across 60 domains. Its 294 tools cover government and regulatory records, financial and economic data, carrier safety, sanctions/KYB, courts, property and real estate, health, energy, patents, nonprofits, and cross-source evidence workflows. Load task-specific tool groups with ?groups=. API-key access includes a free 1,000-query monthly tier, no card. Anonymous evaluation is supported. Coverage, freshness, and upstream requirements vary by source."
 }
