@@ -4,6 +4,8 @@ Verified September 8, 2026 against the hosted service. Use this copy for current
 
 ## Short description
 
+Optional coverage headline: **Over 2 million indexed public records. One MCP endpoint.** This counts nonprofit and court-case metadata records; link to [the dated coverage evidence](COVERAGE.md) when using it. Keep the technical catalog counts below for installation and directory validation.
+
 Hosted Streamable HTTP MCP for source-linked public data: 294 tools across 60 domains.
 
 ## Extended description

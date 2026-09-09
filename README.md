@@ -1,13 +1,15 @@
 # LiveDataLink MCP Server
 
-> Source-linked public records. One MCP endpoint. Choose the data tools your workflow needs.
+> Over 2 million indexed public records. One MCP endpoint.
+
+Choose the data tools your workflow needs. The record count covers indexed nonprofit and court-case metadata; [see the dated measurements and scope](COVERAGE.md).
 
 [![Status](https://img.shields.io/badge/status-live-success)](https://livedatalink.ai)
 [![Tools](https://img.shields.io/badge/tools-294-blue)](https://livedatalink.ai/tools)
 [![Domains](https://img.shields.io/badge/domains-60-blue)](https://livedatalink.ai/tools)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-LiveDataLink is a hosted MCP (Model Context Protocol) server that gives AI agents access to government, regulatory, market, compliance, healthcare, and risk data through a single Streamable HTTP endpoint. Freshness varies by source; see the [status page](https://livedatalink.ai/status) for source-level status. Free tier available with no credit card.
+LiveDataLink is a hosted MCP (Model Context Protocol) server that gives AI agents access to government, regulatory, market, compliance, healthcare, and risk data through a single Streamable HTTP endpoint. Freshness varies by source; see the [source catalog](https://livedatalink.ai/data) and [trust information](https://livedatalink.ai/trust). Free tier available with no credit card.
 
 ## Install
 
