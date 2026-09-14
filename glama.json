@@ -3,5 +3,5 @@
   "maintainers": [
     "blackboxfoundry-ops"
   ],
-  "description": "LiveDataLink gives AI agents one hosted Streamable HTTP MCP endpoint for source-linked public data across 60 domains. Its 294 tools cover government and regulatory records, financial and economic data, carrier safety, sanctions/KYB, courts, property and real estate, health, energy, patents, nonprofits, and cross-source evidence workflows. Load task-specific tool groups with ?groups=. API-key access includes a free 1,000-query monthly tier, no card. Anonymous evaluation is supported. Coverage, freshness, and upstream requirements vary by source."
+  "description": "LiveDataLink gives AI agents one hosted Streamable HTTP MCP endpoint for source-linked public data across 81 domains. Its 377 tools cover government and regulatory records, financial and economic data, carrier safety, sanctions/KYB, courts, property and real estate, health, energy, patents, nonprofits, and cross-source evidence workflows. Load task-specific tool groups with ?groups=. API-key access includes a free 1,000-query monthly tier, no card. Anonymous evaluation is supported. Coverage, freshness, and upstream requirements vary by source."
 }
