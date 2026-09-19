@@ -1,0 +1,43 @@
+{
+  "name": "livedatalink-public-data",
+  "version": "1.0.0",
+  "description": "Research companies and counterparties with authoritative public records.",
+  "author": {
+    "name": "Blackbox Foundry LLC",
+    "email": "support@livedatalink.ai",
+    "url": "https://livedatalink.ai"
+  },
+  "homepage": "https://livedatalink.ai",
+  "repository": "https://github.com/blackboxfoundry/livedatalink",
+  "license": "MIT",
+  "keywords": [
+    "public-data",
+    "due-diligence",
+    "sanctions",
+    "government-data",
+    "mcp"
+  ],
+  "interface": {
+    "displayName": "LiveDataLink Public Data",
+    "shortDescription": "Research businesses using authoritative public records.",
+    "longDescription": "Search sanctions, carrier safety, federal spending, provider exclusions, contractor licenses, regulations, and court records through a focused read-only MCP connection.",
+    "developerName": "Blackbox Foundry LLC",
+    "category": "Research",
+    "capabilities": [
+      "Read-only public data",
+      "Business due diligence"
+    ],
+    "websiteURL": "https://livedatalink.ai",
+    "privacyPolicyURL": "https://livedatalink.ai/privacy",
+    "termsOfServiceURL": "https://livedatalink.ai/terms",
+    "defaultPrompt": [
+      "Screen a company and its aliases against sanctions lists.",
+      "Build a public-record due diligence brief on this company.",
+      "Check a freight carrier's authority and safety history."
+    ],
+    "brandColor": "#10B981",
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png"
+  },
+  "mcpServers": "./.mcp.json"
+}

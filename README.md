@@ -13,6 +13,21 @@ LiveDataLink is a hosted MCP (Model Context Protocol) server that gives AI agent
 
 ## Install
 
+### Install as a Codex plugin from GitHub
+
+The public repository is also a Codex plugin marketplace. Install the focused, read-only LiveDataLink plugin with:
+
+```powershell
+codex plugin marketplace add blackboxfoundry/livedatalink --ref main
+codex plugin add livedatalink-public-data@livedatalink
+```
+
+Start a new Codex task after installation. The plugin uses `https://livedatalink.ai/mcp/openai`, a curated 36-tool surface for public-record business and counterparty research. A limited anonymous evaluation is available, so installation does not require a key.
+
+Plugin package: [`plugins/livedatalink-public-data`](plugins/livedatalink-public-data)
+
+### Configure another MCP client
+
 Get a free API key first (1,000 queries/month, no credit card): https://livedatalink.ai/signup/free.
 
 Then add this to your MCP client's config:

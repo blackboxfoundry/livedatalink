@@ -1,0 +1,20 @@
+{
+  "name": "livedatalink",
+  "interface": {
+    "displayName": "LiveDataLink"
+  },
+  "plugins": [
+    {
+      "name": "livedatalink-public-data",
+      "source": {
+        "source": "local",
+        "path": "./plugins/livedatalink-public-data"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Research"
+    }
+  ]
+}
